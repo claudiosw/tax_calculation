@@ -41,7 +41,7 @@ class Tax:
             return True
         return False
 
-    def calculate_price_with_tax(self, product_name, sale_price):
+    def calculate_unitary_price_with_tax(self, product_name, sale_price):
 
         if not self.basic_tax_exempt(product_name):
             temp_tax = self._basicTax
@@ -55,7 +55,11 @@ class Tax:
         only_tax = sale_price * (temp_tax / 100)
         only_tax = ceil(only_tax*20)/20
         price_with_tax = sale_price + only_tax
-        self._sales_taxes += price_with_tax - sale_price
+        return price_with_tax
+
+    def calculate_total_price_with_tax(self, product_name, sale_price, quantity):
+        price_with_tax = self.calculate_unitary_price_with_tax(product_name, sale_price) * quantity
+        self._sales_taxes += price_with_tax - sale_price * quantity
         self._total_price_with_taxes += price_with_tax
         return price_with_tax
 
@@ -66,6 +70,8 @@ class Tax:
     def calculate(self):
         for dic in self._list_of_items:
             print(str(dic["quantity"]) + " " + dic["product_name"] + ": " +
-                  self.format_decimal(self.calculate_price_with_tax(dic["product_name"], float(dic["price"]))))
+                  self.format_decimal(self.calculate_total_price_with_tax(dic["product_name"],
+                                                                          float(dic["price"]),
+                                                                          float(dic["quantity"]))))
         print("Sales Taxes: " + self.format_decimal(self._sales_taxes))
         print("Total: " + self.format_decimal(self._total_price_with_taxes))

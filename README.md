@@ -1,14 +1,25 @@
 # Tax Calculation
 
+## ToDo
+* Deal better with quantities - Check Input4 and do test case
+* Implement SOLID principles
+* Treat numbers as decimals
+
+## How to Execute
+
 Execute this command to see the code in action:
 
 ```bash
 python main.py
 ```
+The file main.py executes the 3 inputs proposed in the problem description.
+
+The inputs are in the "inputs" directory.
 
 ## Understanding the project
 
-The file main.py contain the Python code.
+The file tax.py contain the Python code in a class named Tax. To execute the code, instantiate the class Tax with the file path as a parameter. Then call the method calculate(). You can see examples in the main.py file.  
+
 The file test_tax.py that is in the tests directory contain the tests.
 
 ## Tests

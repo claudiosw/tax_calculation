@@ -1,0 +1,6 @@
+from tax import *
+
+print("\nOutput 4:")
+t4 = Tax("inputs/Input4.txt")
+t4.calculate()
+

@@ -1,5 +1,7 @@
 import pytest
 from tax import *
+from decimal import Decimal as D
+import math
 
 
 def test_tax_exempt():
@@ -36,26 +38,20 @@ def test_import_tax_required():
 
 def test_calculate_price_with_tax():
     t1 = Tax("inputs/Input1.txt")
-    value = t1.calculate_price_with_tax("book", 12.49)
-    assert value == 12.49
+    value = t1.calculate_total_price_with_tax("book", D(12.49), D(1))
+    assert math.isclose(value, 12.49, rel_tol=0.01)
 
     t1 = Tax("inputs/Input1.txt")
-    value = t1.calculate_price_with_tax("music CD", 14.99)
-    assert round(value, 2) == 16.49
+    value = t1.calculate_total_price_with_tax("music CD", D(14.99), D(1))
+    assert math.isclose(value, 16.49, rel_tol=0.01)
 
     t1 = Tax("inputs/Input1.txt")
-    value = t1.calculate_price_with_tax("imported bottle of perfume", 47.50)
-    assert value == 54.65
+    value = t1.calculate_total_price_with_tax("imported bottle of perfume", D(47.50), D(1))
+    assert math.isclose(value, 54.65, rel_tol=0.01)
 
     t1 = Tax("inputs/Input1.txt")
-    value = t1.calculate_price_with_tax("imported box of chocolates", 10.00)
-    assert value == 10.50
-
-
-def test_format_decimal():
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.format_decimal(12.5)
-    assert value == "12.50"
+    value = t1.calculate_total_price_with_tax("imported box of chocolates", D(10.00), D(1))
+    assert math.isclose(value, 10.50, rel_tol=0.01)
 
 
 def test_calculate(capsys):

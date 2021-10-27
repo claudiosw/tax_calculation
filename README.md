@@ -3,7 +3,7 @@
 ## ToDo
 * Deal better with quantities - Check Input4 and do test case
 * Implement SOLID principles
-* Treat numbers as decimals
+* Treat numbers as decimals - Ok?
 
 ## How to Execute
 

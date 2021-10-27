@@ -1,14 +1,14 @@
 from math import ceil
-
+from decimal import Decimal as D
 
 class Tax:
     def __init__(self, file_name):
         self._exempts = ["pill", "book", "chocolate"]
-        self._basicTax = 10
-        self._importTax = 5
-        self._precision = 0.05
-        self._sales_taxes = 0
-        self._total_price_with_taxes = 0
+        self._basicTax = D(10)
+        self._importTax = D(5)
+        self._precision = D(0.05)
+        self._sales_taxes = D(0)
+        self._total_price_with_taxes = D(0)
         self._file_name = file_name
         self._input_file = open(file_name, "r")
         self._list_of_items = []
@@ -22,7 +22,6 @@ class Tax:
                 if line.find(" at ") > 0:
                     temp, price = line.rsplit(" at ", 1)
                     quantity, product_name = temp.split(" ", 1)
-                    # print("quantity=" + str(quantity) + "product_name=" + product_name + "price=" + str(price))
                     self._list_of_items.append({"quantity": quantity, "product_name": product_name,
                                                 "price": price})
 
@@ -52,8 +51,8 @@ class Tax:
         if self.import_tax_required(product_name):
             temp_tax += self._importTax
 
-        only_tax = sale_price * (temp_tax / 100)
-        only_tax = ceil(only_tax*20)/20
+        only_tax = sale_price * (temp_tax / D(100))
+        only_tax = ceil(only_tax*D(20))/D(20)
         price_with_tax = sale_price + only_tax
         return price_with_tax
 
@@ -70,8 +69,8 @@ class Tax:
     def calculate(self):
         for dic in self._list_of_items:
             print(str(dic["quantity"]) + " " + dic["product_name"] + ": " +
-                  self.format_decimal(self.calculate_total_price_with_tax(dic["product_name"],
-                                                                          float(dic["price"]),
-                                                                          float(dic["quantity"]))))
+                  str(self.calculate_total_price_with_tax(dic["product_name"],
+                                                                          D(dic["price"]),
+                                                                          D(dic["quantity"]))))
         print("Sales Taxes: " + self.format_decimal(self._sales_taxes))
         print("Total: " + self.format_decimal(self._total_price_with_taxes))

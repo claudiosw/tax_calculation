@@ -60,3 +60,9 @@ def test_calculate(capsys):
     captured = capsys.readouterr()
     assert captured.out == "1 imported bottle of perfume: 32.19\n1 bottle of perfume: 20.89\n1 packet of headache" + \
                            " pills: 9.75\n1 box of imported chocolates: 11.85\nSales Taxes: 6.70\nTotal: 74.68\n"
+
+    t1 = Tax("inputs/Input4.txt")
+    t1.calculate()
+    captured = capsys.readouterr()
+    assert captured.out == "2 imported bottle of perfume: 64.38\n1 bottle of perfume: 20.89\n2 packet of headache" + \
+                           " pills: 19.50\n1 box of imported chocolates: 11.85\nSales Taxes: 10.90\nTotal: 116.62\n"

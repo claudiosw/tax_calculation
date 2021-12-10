@@ -20,7 +20,7 @@ The inputs are in the "inputs" directory.
 
 The file tax.py contain the Python code in a class named Tax. To execute the code, instantiate the class Tax with the file path as a parameter. Then call the method calculate(). You can see examples in the main.py file.  
 
-The file test_tax.py that is in the tests directory contain the tests.
+The file test_tax.py, that is in the tests directory, contain the tests.
 
 ## Tests
 

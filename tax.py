@@ -1,5 +1,7 @@
 from math import ceil
 from decimal import Decimal as D
+from file import InputFile
+
 
 class Tax:
     def __init__(self, file_name):
@@ -10,20 +12,9 @@ class Tax:
         self._sales_taxes = D(0)
         self._total_price_with_taxes = D(0)
         self._file_name = file_name
-        self._input_file = open(file_name, "r")
+        ifile = InputFile(file_name)
         self._list_of_items = []
-        self.load_from_file()
-
-    def load_from_file(self):
-        with open(self._file_name) as f:
-
-            for line in f:
-
-                if line.find(" at ") > 0:
-                    temp, price = line.rsplit(" at ", 1)
-                    quantity, product_name = temp.split(" ", 1)
-                    self._list_of_items.append({"quantity": quantity, "product_name": product_name,
-                                                "price": price})
+        self._list_of_items = ifile.load_order_from_file()
 
     def basic_tax_exempt(self, product_name):
 
@@ -70,7 +61,7 @@ class Tax:
         for dic in self._list_of_items:
             print(str(dic["quantity"]) + " " + dic["product_name"] + ": " +
                   str(self.calculate_total_price_with_tax(dic["product_name"],
-                                                                          D(dic["price"]),
-                                                                          D(dic["quantity"]))))
+                                                          D(dic["price"]),
+                                                          D(dic["quantity"]))))
         print("Sales Taxes: " + self.format_decimal(self._sales_taxes))
         print("Total: " + self.format_decimal(self._total_price_with_taxes))

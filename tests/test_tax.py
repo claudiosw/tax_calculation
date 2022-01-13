@@ -4,26 +4,18 @@ from decimal import Decimal as D
 import math
 
 
-def test_tax_exempt():
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.basic_tax_exempt("chocolate bar")
-    assert value is True
-
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.basic_tax_exempt("Chocolate bar")
-    assert value is True
-
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.basic_tax_exempt("Book")
-    assert value is True
-
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.basic_tax_exempt("packet of headache pills")
-    assert value is True
-
-    t1 = Tax("inputs/Input1.txt")
-    value = t1.basic_tax_exempt("imported bottle of perfume")
-    assert value is False
+@pytest.mark.parametrize(
+   'file_path, product_name, expected_result', [
+       ("inputs/Input1.txt", "chocolate bar", True),
+       ("inputs/Input1.txt", "Book", True),
+       ("inputs/Input1.txt", "packet of headache pills", True),
+       ("inputs/Input1.txt", "imported bottle of perfume", False)
+   ]
+)
+def test_tax_exempt(file_path, product_name, expected_result):
+    t1 = Tax(file_path)
+    value = t1.basic_tax_exempt(product_name)
+    assert value is expected_result
 
 
 def test_import_tax_required():

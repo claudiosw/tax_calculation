@@ -5,11 +5,11 @@ import math
 
 
 @pytest.mark.parametrize(
-   'file_path, product_name, expected_result', [
-       ("inputs/Input1.txt", "chocolate bar", True),
-       ("inputs/Input1.txt", "Book", True),
-       ("inputs/Input1.txt", "packet of headache pills", True),
-       ("inputs/Input1.txt", "imported bottle of perfume", False)
+   'file_path, product_name, expected_result', 'desc' [
+       ("inputs/Input1.txt", "chocolate bar", True, "Tax Exempt chocolate"),
+       ("inputs/Input1.txt", "Book", True, "Tax Exempt book + different case"),
+       ("inputs/Input1.txt", "packet of headache pills", True, "Tax Exempt pill"),
+       ("inputs/Input1.txt", "imported bottle of perfume", False, "Not a Tax Exempt")
    ]
 )
 def test_tax_exempt(file_path, product_name, expected_result):

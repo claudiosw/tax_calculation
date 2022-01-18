@@ -45,18 +45,20 @@ def test_calculate_price_with_tax(file_path, product_name, sale_price, quantity,
 
 
 @pytest.mark.parametrize(
-  'desc, file_path, expected_result', [
-      ("Test file with only 1 quantity", "inputs/Input3.txt",
+  'file_path, expected_result, desc', [
+      ("inputs/Input3.txt",
        "1 imported bottle of perfume: 32.19\n1 bottle of perfume: 20.89\n1 packet of headache" + \
-       " pills: 9.75\n1 box of imported chocolates: 11.85\nSales Taxes: 6.70\nTotal: 74.68\n"
+       " pills: 9.75\n1 box of imported chocolates: 11.85\nSales Taxes: 6.70\nTotal: 74.68\n",
+       "Test file with only 1 quantity"
        ),
-      ("Test file with more than 1 quantity", "inputs/Input4.txt",
+      ("inputs/Input4.txt",
        "2 imported bottle of perfume: 64.38\n1 bottle of perfume: 20.89\n2 packet of headache" + \
-       " pills: 19.50\n1 box of imported chocolates: 11.85\nSales Taxes: 10.90\nTotal: 116.62\n"
+       " pills: 19.50\n1 box of imported chocolates: 11.85\nSales Taxes: 10.90\nTotal: 116.62\n",
+       "Test file with more than 1 quantity"
        ),
   ]
 )
-def test_calculate(desc, file_path, expected_result, capsys):
+def test_calculate(file_path, expected_result, desc, capsys):
    t1 = Tax(file_path)
    t1.calculate()
    captured = capsys.readouterr()

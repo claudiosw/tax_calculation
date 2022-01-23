@@ -25,9 +25,9 @@ def test_tax_exempt(file_path, product_name, expected_result, desc):
   ]
 )
 def test_import_tax_required(file_path, product_name, expected_result, desc):
-   t1 = Tax(file_path)
-   value = t1.import_tax_required(product_name)
-   assert value is expected_result
+    t1 = Tax(file_path)
+    value = t1.import_tax_required(product_name)
+    assert value is expected_result
 
 
 @pytest.mark.parametrize(
@@ -39,9 +39,9 @@ def test_import_tax_required(file_path, product_name, expected_result, desc):
   ]
 )
 def test_calculate_price_with_tax(file_path, product_name, sale_price, quantity, expected_result, desc):
-   t1 = Tax(file_path)
-   value = t1.calculate_total_price_with_tax(product_name, D(sale_price), D(quantity))
-   assert math.isclose(value, expected_result, rel_tol=0.01)
+    t1 = Tax(file_path)
+    value = t1.calculate_total_price_with_tax(product_name, D(sale_price), D(quantity))
+    assert math.isclose(value, expected_result, rel_tol=0.01)
 
 
 @pytest.mark.parametrize(
@@ -59,8 +59,8 @@ def test_calculate_price_with_tax(file_path, product_name, sale_price, quantity,
   ]
 )
 def test_calculate(file_path, expected_result, desc, capsys):
-   t1 = Tax(file_path)
-   t1.calculate()
-   captured = capsys.readouterr()
-   assert captured.out == expected_result
+    t1 = Tax(file_path)
+    t1.calculate()
+    captured = capsys.readouterr()
+    assert captured.out == expected_result
 

@@ -1,4 +1,4 @@
-from tax import *
+from tax import Tax
 
 print("\nOutput 1:")
 t1 = Tax("inputs/Input1.txt")

@@ -39,7 +39,8 @@ class Tax(object):
             temp_tax += self._importTax
 
         only_tax = sale_price * (temp_tax / Decimal(100))
-        only_tax = ceil(only_tax*Decimal(20))/Decimal(20)
+        round_close_to = 0.05
+        only_tax = ceil(only_tax / round_close_to) * round_close_to
         return sale_price + only_tax
 
     def calculate_total_price_with_tax(

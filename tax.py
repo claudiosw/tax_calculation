@@ -40,6 +40,7 @@ class Tax(object):
 
         only_tax = sale_price * (temp_tax / Decimal(100))
         round_close_to = 0.05
+        round_close_to = Decimal(round_close_to)
         only_tax = ceil(only_tax / round_close_to) * round_close_to
         return sale_price + only_tax
 

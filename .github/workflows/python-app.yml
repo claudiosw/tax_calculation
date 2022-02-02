@@ -27,8 +27,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --extend-ignore=D100,D101,D102,D103,D107,I001,I003,I004,S101,WPS339 --show-source --statistics
+        flake8 . --count --show-source --statistics --extend-ignore=D100,D101,D102,D103,D107,I001,I003,I004,S101,WPS210,WPS339,WPS421
     - name: Test with pytest
       run: |
         pytest

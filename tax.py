@@ -4,7 +4,12 @@ from file import InputFile
 
 
 def import_tax_required(product_name):
+    """
+    Return True if it is an imported product.
 
+    :param str product_name: name of the product
+    :return: if it is imported
+    """
     return 'IMPORTED' in product_name.upper()
 
 

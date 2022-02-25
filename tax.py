@@ -14,7 +14,13 @@ def import_tax_required(product_name):
 
 
 class Tax(object):
+    """ Class that does tax calculation """
+
     def __init__(self, file_name):
+        """
+
+        :param file_name: path of the input file
+        """
         self._exempts = ['pill', 'book', 'chocolate']
         self._basicTax = 10
         self._importTax = Decimal(5)
@@ -26,6 +32,12 @@ class Tax(object):
         self._list_of_items = ifile.load_order_from_file()
 
     def basic_tax_exempt(self, product_name):
+        """
+        Check if the product is in the tax exempt list
+
+        :param product_name: Description of the product
+        :return: Return True if it is in the tax exempt list
+        """
 
         for exempt in self._exempts:
 
@@ -34,6 +46,13 @@ class Tax(object):
         return False
 
     def calculate_unitary_price_with_tax(self, product_name, sale_price):
+        """
+        Calculate the unitary price with tax
+
+        :param product_name: Description of the product
+        :param sale_price: Sale price without tax
+        :return: Sale price with tax
+        """
 
         if self.basic_tax_exempt(product_name):
             temp_tax = 0
@@ -55,6 +74,14 @@ class Tax(object):
         sale_price,
         quantity,
     ):
+        """
+        Calculate the total price with tax
+
+        :param product_name: Description of the product
+        :param sale_price: Unitary sale price without tax
+        :param quantity: Quantity of products sold
+        :return: Total sale price with tax
+        """
         price_with_tax = self.calculate_unitary_price_with_tax(
             product_name,
             sale_price,
@@ -64,6 +91,9 @@ class Tax(object):
         return price_with_tax
 
     def calculate(self):
+        """
+        Get input data, calculate tax and output it
+        """
         for dic in self._list_of_items:
             total_price_with_tax = self.calculate_total_price_with_tax(
                 dic['product_name'],

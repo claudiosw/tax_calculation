@@ -14,7 +14,23 @@ def import_tax_required(product_name):
 
 
 class Tax(object):
-    """ Class that does tax calculation """
+    """
+    Class that does tax calculation
+
+    Test case example:
+
+    .. doctest::
+
+    >>> from tax import Tax
+    >>> t1 = Tax('inputs/Input1.txt')
+    >>> t1.calculate()
+    1 book: 12.49
+    1 music CD: 16.49
+    1 chocolate bar: 0.85
+    Sales Taxes: 1.50
+    Total: 29.83
+
+    """
 
     def __init__(self, file_name):
         """

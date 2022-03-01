@@ -110,7 +110,8 @@ class Tax(object):
 
     def calculate(self):
         """
-        Get input data from the input file, calculate tax and print the receipt of the sale including tax
+        Get input data from the input file, calculate tax and print the
+        receipt of the sale including tax
 
         """
         for dic in self._list_of_items:

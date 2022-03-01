@@ -59,7 +59,11 @@ class Tax(object):
                 return True
         return False
 
-    def calculate_unitary_price_with_tax(self, product_name: str, sale_price: Decimal) -> Decimal:
+    def calculate_unitary_price_with_tax(
+            self,
+            product_name: str,
+            sale_price: Decimal
+    ) -> Decimal:
         """
         Calculate the unitary price with tax
 

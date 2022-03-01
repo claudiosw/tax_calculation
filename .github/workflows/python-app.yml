@@ -33,5 +33,5 @@ jobs:
         pytest
     - uses: ammaraskar/sphinx-action@master
       with:
+        name: Build Docs
         docs-folder: "docs/"
-    - name: Build Docs

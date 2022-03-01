@@ -3,7 +3,7 @@ from decimal import Decimal
 from file import InputFile
 
 
-def import_tax_required(product_name):
+def import_tax_required(product_name: str) -> str:
     """
     Return True if it is an imported product.
 
@@ -19,8 +19,6 @@ class Tax(object):
 
     Test case example:
 
-    .. doctest::
-
     >>> from tax import Tax
     >>> t1 = Tax('inputs/Input1.txt')
     >>> t1.calculate()
@@ -32,7 +30,7 @@ class Tax(object):
 
     """
 
-    def __init__(self, file_name):
+    def __init__(self, file_name: str):
         """
 
         :param file_name: path of the input file
@@ -47,7 +45,7 @@ class Tax(object):
         self._list_of_items = []
         self._list_of_items = ifile.load_order_from_file()
 
-    def basic_tax_exempt(self, product_name):
+    def basic_tax_exempt(self, product_name: str) -> bool:
         """
         Check if the product is in the tax exempt list
 
@@ -61,7 +59,7 @@ class Tax(object):
                 return True
         return False
 
-    def calculate_unitary_price_with_tax(self, product_name, sale_price):
+    def calculate_unitary_price_with_tax(self, product_name: str, sale_price: Decimal) -> Decimal:
         """
         Calculate the unitary price with tax
 
@@ -86,10 +84,10 @@ class Tax(object):
 
     def calculate_total_price_with_tax(
         self,
-        product_name,
-        sale_price,
-        quantity,
-    ):
+        product_name: str,
+        sale_price: Decimal,
+        quantity: Decimal,
+    ) -> Decimal:
         """
         Calculate the total price with tax
 
@@ -109,6 +107,7 @@ class Tax(object):
     def calculate(self):
         """
         Get input data, calculate tax and output it
+
         """
         for dic in self._list_of_items:
             total_price_with_tax = self.calculate_total_price_with_tax(

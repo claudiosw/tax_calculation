@@ -31,3 +31,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        name: Build Docs
+        docs-folder: "docs/"

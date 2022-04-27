@@ -7,8 +7,9 @@ class InputFile(object):
     >>> from file import InputFile
     >>> ifile = InputFile('inputs/Input1.txt')
     >>> ifile.load_order_from_file()
-    [{'quantity': '1', 'product_name': 'book', 'price': '12.49\n'}, {'quantity': '1', 'product_name': 'music CD',
-    'price': '14.99\n'}, {'quantity': '1', 'product_name': 'chocolate bar', 'price': '0.85'}]
+    [{'quantity': '1', 'product_name': 'book', 'price': '12.49\n'},
+    {'quantity': '1', 'product_name': 'music CD','price': '14.99\n'},
+    {'quantity': '1', 'product_name': 'chocolate bar', 'price': '0.85'}]
 
     """
     def __init__(self, file_name: str):

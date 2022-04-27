@@ -1,9 +1,9 @@
 # Tax Calculation
 
-## ToDo
-* Deal better with quantities - Check Input4 and do test case
-* Implement SOLID principles
-* Treat numbers as decimals - Ok?
+## Improvements from the old version
+* File handling in a different class/file
+* Dealing with quantities 
+* Documentation
 
 ## How to Execute
 

@@ -22,7 +22,7 @@ t2.calculate()
 
 print('\nOutput 3:')
 t3 = Tax('inputs/Input3.txt')
-t3.calculate-()
+t3.calculate()
 
 print('\nOutput 4:')
 t4 = Tax('inputs/Input4.txt')
